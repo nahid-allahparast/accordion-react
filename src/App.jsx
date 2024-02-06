@@ -1,5 +1,7 @@
+import Accordion from "./component/Accordion";
+
 const App = () => {
-    return ( <h1>hi...!</h1> );
-}
- 
+  return <Accordion />;
+};
+
 export default App;
