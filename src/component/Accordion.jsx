@@ -1,4 +1,5 @@
 import { useState } from "react";
+import{ChevronDownIcon}from '@heroicons/react/24/outline'
 
 const data = [
   {
@@ -30,10 +31,13 @@ const Accordion = ({}) => {
 export default Accordion;
 
 const AccordionItem = ({ item }) => {
-  const[isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="accordion-item">
-      <div className="accordion-item__header"> {item.title}</div>
+    <div className={`accordion-item ${isOpen && "accordion__expanded"}`}>
+      <div className="accordion-item__header" onClick={()=>setIsOpen(!isOpen)}>
+       <div> {item.title}</div>
+       <ChevronDownIcon className="accordion-item__chevron"/>
+      </div>
       <div className="accordion-item__content">{item.text}</div>
     </div>
   );

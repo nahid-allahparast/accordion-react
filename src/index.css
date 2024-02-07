@@ -44,8 +44,8 @@
   
   .accordion-item__content {
     transition: all 0.3s ease-in-out;
-    /* max-height: 0px;
-    opacity: 0; */
+    max-height: 0px;
+    opacity: 0;
     overflow: hidden;
     color: #374151;
     font-size: 1.1rem;
