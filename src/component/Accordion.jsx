@@ -29,26 +29,48 @@ const Accordion = () => {
       {data.map((item) => (
         <AccordionItem
           key={item.id}
-          item={item}
+          id={item.id}
+          title={item.title}
           onOpen={openHandler}
           open={open}
-        />
+        >
+          {item.text}
+        </AccordionItem>
       ))}
+      <AccordionItem
+        id={4}
+        title={"Another Accordion"}
+        onOpen={openHandler}
+        open={open}
+      >
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda
+          dolores deleniti alias distinctio nemo provident! Consectetur eligendi
+          reiciendis saepe nostrum id ab. Sequi veniam dolor mollitia. Ad
+          voluptas laudantium earum?
+        </p>
+        <ul>
+          <li>one</li>
+          <li>two</li>
+          <li>three</li>
+        </ul>
+        <a>Click ME</a>
+      </AccordionItem>
     </div>
   );
 };
 
 export default Accordion;
 
-const AccordionItem = ({ item, open, onOpen }) => {
-  const isOpen = item.id === open;
+const AccordionItem = ({ id, title, open, onOpen, children }) => {
+  const isOpen = id === open;
   return (
     <div className={`accordion-item ${isOpen && "accordion__expanded"}`}>
-      <div className="accordion-item__header" onClick={() => onOpen(item.id)}>
-        <div> {item.title}</div>
+      <div className="accordion-item__header" onClick={() => onOpen(id)}>
+        <div> {title}</div>
         <ChevronDownIcon className="accordion-item__chevron" />
       </div>
-      <div className="accordion-item__content">{item.text}</div>
+      <div className="accordion-item__content">{children}</div>
     </div>
   );
 };
